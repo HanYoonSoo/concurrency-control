@@ -1,0 +1,58 @@
+version: "3"
+services:
+  was1:
+    build:
+      context: .
+      dockerfile: Dockerfile.server1
+    container_name: was1
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    networks:
+      - application
+
+  was2:
+    build:
+      context: .
+      dockerfile: Dockerfile.server2
+    container_name: was2
+    restart: on-failure
+    ports:
+      - "8081:8080"
+    networks:
+      - application
+
+  database:
+    image: mysql:8.0.33
+    container_name: database
+    restart: always
+    ports:
+      - "13306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: "ticket"
+      TZ: "Asia/Seoul"
+      LANG: "C.UTF_8"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    networks:
+      - application
+
+  nginx:
+    image: nginx:1.21.5-alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./app.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - was1
+      - was2
+    networks:
+      - application
+
+networks:
+  application:
+    external: true
