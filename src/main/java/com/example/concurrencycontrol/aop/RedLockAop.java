@@ -1,7 +1,6 @@
 package com.example.concurrencycontrol.aop;
 
-import com.example.concurrencycontrol.RequiresNewService;
-import com.example.concurrencycontrol.TicketV7Service;
+import com.example.concurrencycontrol.service.RequiresNewService;
 import com.example.concurrencycontrol.annotation.RedLock;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -18,8 +17,6 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
-
-import java.lang.reflect.Method;
 
 @Aspect
 @Component

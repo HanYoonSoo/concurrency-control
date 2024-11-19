@@ -1,15 +1,13 @@
 package com.example.concurrencycontrol;
 
-import com.example.concurrencycontrol.ConcurrencyControlApplication;
-import com.example.concurrencycontrol.Ticket;
-import com.example.concurrencycontrol.TicketRepository;
-import com.example.concurrencycontrol.TicketV1Service;
+import com.example.concurrencycontrol.domain.Ticket;
+import com.example.concurrencycontrol.repository.TicketRepository;
+import com.example.concurrencycontrol.service.TicketV1Service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;

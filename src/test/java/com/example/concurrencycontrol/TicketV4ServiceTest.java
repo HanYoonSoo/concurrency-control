@@ -1,5 +1,8 @@
 package com.example.concurrencycontrol;
 
+import com.example.concurrencycontrol.domain.Ticket;
+import com.example.concurrencycontrol.repository.TicketRepository;
+import com.example.concurrencycontrol.service.TicketV4Service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

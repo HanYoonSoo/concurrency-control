@@ -1,4 +1,4 @@
-package com.example.concurrencycontrol;
+package com.example.concurrencycontrol.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;

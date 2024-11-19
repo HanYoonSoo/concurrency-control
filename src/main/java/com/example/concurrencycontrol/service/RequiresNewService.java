@@ -1,4 +1,4 @@
-package com.example.concurrencycontrol;
+package com.example.concurrencycontrol.service;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Service;

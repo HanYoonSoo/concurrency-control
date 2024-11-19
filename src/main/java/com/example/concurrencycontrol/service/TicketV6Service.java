@@ -1,7 +1,8 @@
-package com.example.concurrencycontrol;
+package com.example.concurrencycontrol.service;
 
+import com.example.concurrencycontrol.domain.Ticket;
+import com.example.concurrencycontrol.repository.TicketRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;

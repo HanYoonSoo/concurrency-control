@@ -36,6 +36,7 @@ dependencies {
 
     /* Redis 추가 */
     implementation("org.redisson:redisson-spring-boot-starter:3.21.1")
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 tasks.named('test') {
