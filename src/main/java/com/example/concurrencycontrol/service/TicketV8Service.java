@@ -96,4 +96,20 @@ public class TicketV8Service {
 
         ticket2Repository.save(ticket2);
     }
+
+    public void purchaseTicketOnlyRedis(PurchaseTicketRequest request) {
+        Long isAdd = ticket2RedisRepository.add(request.getEventId(), request.getUserId());
+
+        if(isAdd != 1){
+            return;
+        }
+
+        Long count = ticket2RedisRepository.increment(request.getEventId());
+
+        if(count > 100){
+            return;
+        }
+
+        ticket2RedisRepository.savePurchaseTicket(request);
+    }
 }

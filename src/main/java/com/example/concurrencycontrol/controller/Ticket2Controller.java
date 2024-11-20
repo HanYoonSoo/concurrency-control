@@ -16,8 +16,15 @@ public class Ticket2Controller {
 
     @PostMapping("/api/v8/tickets/purchase")
     public String purchaseTicket(@RequestBody PurchaseTicketRequest request) {
-        System.out.println(request.getUserId() + "Hello");
+//        System.out.println(request.getUserId() + "Hello");
         ticketV8Service.purchaseTicketWithRedisAndSet(request);
+        return "success";
+    }
+
+    @PostMapping("/api/v10/tickets/purchase")
+    public String purchaseTicketOnlyRedis(@RequestBody PurchaseTicketRequest request) {
+//        System.out.println(request.getUserId() + "Hello");
+        ticketV8Service.purchaseTicketOnlyRedis(request);
         return "success";
     }
 }

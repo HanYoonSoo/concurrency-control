@@ -3,10 +3,10 @@ import {check, sleep} from 'k6';
 
 export const options = {
     stages: [
-        // {duration: '10s', target: 30000},
-        // {duration: '10s', target: 30000},
-        // {duration: '10s', target: 20000},
-        // {duration: '10s', target: 10000},
+        {duration: '10s', target: 30000},
+        {duration: '10s', target: 30000},
+        {duration: '10s', target: 20000},
+        {duration: '10s', target: 10000},
         {duration: '10s', target: 5000},
         {duration: '10s', target: 5000},
     ],
@@ -36,7 +36,7 @@ export default function (){
         'Content-Type': 'application/json',
     };
     // POST 요청 전송
-    const response = http.post('http://localhost:8080/api/v8/tickets/purchase', payload, {headers: headers});
+    const response = http.post('http://localhost:8080/api/v10/tickets/purchase', payload, {headers: headers});
     check(response, {
         'status is 200': (r) => r.status === 200,
         'response contains success message': (r) => typeof r.body === 'string',
