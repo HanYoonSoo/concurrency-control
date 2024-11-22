@@ -3,11 +3,12 @@ import {check, sleep} from 'k6';
 
 export const options = {
     stages: [
-        {duration: '10s', target: 30000},
-        {duration: '10s', target: 30000},
-        {duration: '10s', target: 20000},
+        // {duration: '1s', target: 1},
         {duration: '10s', target: 10000},
-        {duration: '10s', target: 5000},
+        {duration: '10s', target: 9000},
+        {duration: '10s', target: 8000},
+        {duration: '10s', target: 7000},
+        {duration: '10s', target: 6000},
         {duration: '10s', target: 5000},
     ],
     thresholds: {
@@ -20,9 +21,14 @@ function generatePhoneNumber(){
     return '010-' + String(Math.floor(1000 + Math.random() * 9000)) + '-' + String(Math.floor(1000 + Math.random() * 9000));
 }
 
+function generateUserId(){
+    return Math.floor(Math.random() * 30000) + 1;
+}
+
 export default function (){
     // 요청 본문 데이터
-    const userId = Number(__VU); // 현재 가상 사용자 ID를 사용해 고유 ID로 설정
+    // const userId = Number(__VU); // 현재 가상 사용자 ID를 사용해 고유 ID로 설정
+    const userId = generateUserId();
     // console.log(`User ID: ${userId}`); // 로그 출력
     const payload = JSON.stringify({
        userId: userId,

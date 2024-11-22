@@ -24,7 +24,7 @@ public class Ticket2Controller {
     @PostMapping("/api/v10/tickets/purchase")
     public String purchaseTicketOnlyRedis(@RequestBody PurchaseTicketRequest request) {
 //        System.out.println(request.getUserId() + "Hello");
-        ticketV8Service.purchaseTicketOnlyRedis(request);
+        ticketV8Service.purchaseTicketAtomically(request);
         return "success";
     }
 }

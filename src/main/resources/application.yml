@@ -1,8 +1,8 @@
-server:
-  tomcat:
-    threads:
-      max: 2000       # 최대 스레드 수
-      min-spare: 100  # 최소 대기 스레드 수
+#server:
+#  tomcat:
+#    threads:
+#      max: 2000       # 최대 스레드 수
+#      min-spare: 100  # 최소 대기 스레드 수
 
 
 spring:
@@ -14,11 +14,11 @@ spring:
   redis:
     host: localhost
     port: 6379
-    lettuce:
-      pool:
-        max-active: 1000    # 최대 연결 수
-        max-idle: 200       # 대기 연결
-        min-idle: 50
+#    lettuce:
+#      pool:
+#        max-active: 1000    # 최대 연결 수
+#        max-idle: 200       # 대기 연결
+#        min-idle: 50
   jpa:
     open-in-view: false
     hibernate:

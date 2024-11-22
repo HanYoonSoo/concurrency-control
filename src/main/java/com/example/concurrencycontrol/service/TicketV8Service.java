@@ -77,7 +77,7 @@ public class TicketV8Service {
 
         Long count = ticket2RedisRepository.increment(request.getEventId());
 
-        if(count > 100){
+        if(count > 30000){
             return;
         }
 
@@ -111,5 +111,18 @@ public class TicketV8Service {
         }
 
         ticket2RedisRepository.savePurchaseTicket(request);
+    }
+
+    public void purchaseTicketAtomically(PurchaseTicketRequest request) {
+        Long applyStatus = ticket2RedisRepository.purchaseTicketAtomically(request);
+        if (applyStatus == 1) {
+            log.info("티켓 발급 성공 - 사용자 ID {}", request.getUserId());
+        } else if (applyStatus == 0) {
+            log.info("사용자 {}는 이미 이벤트에 참여했습니다.", request.getUserId());
+        } else if (applyStatus == -1) {
+            log.info("이벤트 ID {}의 티켓 한도가 초과되었습니다.", request.getEventId());
+        } else {
+            log.error("티켓 발급 중 알 수 없는 오류 발생 - 사용자 ID {}", request.getUserId());
+        }
     }
 }
